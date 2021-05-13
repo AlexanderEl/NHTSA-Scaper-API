@@ -5,6 +5,7 @@ This program allows the user to retrieve vehicular information from the NHTSA da
 ## How to use this program
 Flask is necessary to run the frontend, but if that is not used (by running python3 processing.py) then no external modules are required.
 All the data gathering, cleaning and processing is done in a single place to avoid needing a frontend endpoint.
+processing.py is found inside of the api directory, as when when run with the flask frontend it is all part of the api package. 
 
 ## Get Manufacturers
 By accessing localhost:5000/manufacturers, the first page of NHTSA manufacturerrs will be retrieved, cleaned and processed into ease to access data.
