@@ -55,14 +55,12 @@ def get_vehicle_info_from_vin(vin):
 
 
 def main():
-    # all_manufacturers = get_list_of_manufacturers()
-    # all_manufacturers = get_list_of_manufacturers(find_all=True)  #This will take some time to complete
+    all_manufacturers = get_list_of_manufacturers()
+    all_manufacturers = get_list_of_manufacturers(find_all=True)  # This will take some time to complete
 
-    # all_makes = get_all_makes_for_manufacturer("Toyota")
+    all_makes = get_all_makes_for_manufacturer("Toyota")
 
-    # vehicle_data = get_vehicle_info_from_vin("3n1ab6ap7bl729215")
-    vehicle_data = get_vehicle_info_from_vin("YV4952CY3E1639560")
-    print(vehicle_data)
+    vehicle_data = get_vehicle_info_from_vin("3n1ab6ap7bl729215")
 
 
 if __name__ == '__main__':
