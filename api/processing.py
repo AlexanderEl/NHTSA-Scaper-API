@@ -2,6 +2,12 @@ import requests
 import json
 
 
+def error_log_nhtsa_request(e):
+    print("Something went wrong with NHTSA request")
+    print(e)
+    return json.dumps("Failed NHTSA request")
+
+
 def get_list_of_manufacturers(find_all=False):
     all_manufacturers_link = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json"
 
@@ -11,7 +17,11 @@ def get_list_of_manufacturers(find_all=False):
             all_data = []
             while True:
                 link = f"{all_manufacturers_link}&page={index}"
-                data = requests.get(link).json()
+                try:
+                    data = requests.get(link).json()
+                except requests.exceptions.RequestException as e:
+                    error_log_nhtsa_request(e)
+
                 print(index)
                 if data["Count"] == 0:
                     break
@@ -20,7 +30,10 @@ def get_list_of_manufacturers(find_all=False):
                 index += 1
             return all_data
         else:
-            return requests.get(all_manufacturers_link).json()["Results"]
+            try:
+                return requests.get(all_manufacturers_link).json()["Results"]
+            except requests.exceptions.RequestException as e:
+                return error_log_nhtsa_request(e)
 
     raw_manufacturers = get_raw_data(get_all=find_all)
 
@@ -37,13 +50,19 @@ def get_list_of_manufacturers(find_all=False):
 
 def get_all_makes_for_manufacturer(manufacturer):
     list_of_makes_link = f"https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/{manufacturer}?format=json"
-    raw_makes = requests.get(list_of_makes_link).json()["Results"]
+    try:
+        raw_makes = requests.get(list_of_makes_link).json()["Results"]
+    except requests.exceptions.RequestException as e:
+        return error_log_nhtsa_request(e)
     return json.dumps({manufacturer: [make["Model_Name"] for make in raw_makes]})
 
 
 def get_vehicle_info_from_vin(vin):
     vin_link = f"https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/{vin}?format=json"
-    raw_data = requests.get(vin_link).json()["Results"]
+    try:
+        raw_data = requests.get(vin_link).json()["Results"]
+    except requests.exceptions.RequestException as e:
+        return error_log_nhtsa_request(e)
 
     data = {}
     for contents in raw_data:
