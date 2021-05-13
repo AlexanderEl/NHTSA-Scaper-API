@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>NHTSA API</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+	<header class="site-header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="/">NHTSA API</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="content-section">
+			<div class="Manufacturers">
+				<a class="manufacturer link" href="/manufacturers">Manufacturers</a>
+			</div>
+			<div class="spacer"></div>
+			<div class="All Manufacturers">
+				<a class="all manufacturer link" href="/manufacturers/all">All Manufacturers</a>
+			</div>
+			<div class="spacer"></div>
+			<div class="Manufacturer Makes">
+				<a class="manufacturer makes link" href="/makes/toyota">Manufacturer Makes</a>
+			</div>
+			<div class="spacer"></div>
+			<div class="Vin">
+				<a class="vin link" href="/3n1ab6ap7bl729215">Vehicle Info based on VIN</a>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

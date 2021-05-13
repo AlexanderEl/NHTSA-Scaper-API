@@ -56,7 +56,7 @@ def get_vehicle_info_from_vin(vin):
 
 def main():
     all_manufacturers = get_list_of_manufacturers()
-    all_manufacturers = get_list_of_manufacturers(find_all=True)  # This will take some time to complete
+    # all_manufacturers = get_list_of_manufacturers(find_all=True)  # This will take some time to complete
 
     all_makes = get_all_makes_for_manufacturer("Toyota")
 
