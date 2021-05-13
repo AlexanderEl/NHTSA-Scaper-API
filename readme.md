@@ -20,8 +20,8 @@ The results will contain over 500,000 unique manufactures after processing hundr
 **Note:** it is not advised to call for all manufacturers as it takes a long time to make that many requests.
 
 ## Get manufacturer makes
-By accessing localhost:5000/makes/<manufacturer name> this will retrieve all the makes for a specific manufacturer.
+By accessing localhost:5000/makes/'manufacturer name' this will retrieve all the makes for a specific manufacturer.
 This does expect that the given manufacturer's name is correctly spelled (capitalization is not important) so the NHTSA database contains that name.
 
 ## Get vehicle info via VIN
-By calling localhost:5000/<vin> this will retrieve the make, model and year based on the VIN number.
+By calling localhost:5000/'vin number' this will retrieve the make, model and year based on the VIN number.
